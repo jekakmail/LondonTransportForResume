@@ -25,16 +25,24 @@ namespace LondonTransport
             {
                 foreach (dynamic item in enumerable)
                 {
-                    var pos = JObject.Parse(item.ToString());
-                    var lat = pos["lat"];
-                    var lon = pos["lon"];
-                      
-                    mManager.Add(
-                        new GMarker(
-                            new GLatLng(
-                                Convert.ToDouble(lat), Convert.ToDouble(lon)), 
-                                new GIcon() { flatIconOptions = new FlatIconOptions(15, 15, Color.Blue, Color.Black, "C", Color.White, 8,
-                                                FlatIconOptions.flatIconShapeEnum.circle)}), 12);
+                    var el = JObject.Parse(item.ToString());
+                    var lat = el["lat"];
+                    var lon = el["lon"];
+                    var commonName = el["commonName"].ToString();
+
+                    var gIcon = new GIcon()
+                    {
+                        flatIconOptions = new FlatIconOptions(15, 15, Color.Blue, Color.Black, "C", Color.White, 8,
+                            FlatIconOptions.flatIconShapeEnum.circle)
+                    };
+
+                    var gPoint = new GLatLng(Convert.ToDouble(lat), Convert.ToDouble(lon));
+
+                    var gMarker = new GMarker(gPoint, gIcon);
+
+                    var gWindow = new GInfoWindow(gMarker, commonName);
+
+                    mManager.Add(gWindow, 12);
                 }
             }
             else
