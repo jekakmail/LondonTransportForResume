@@ -10,7 +10,7 @@
 namespace LondonTransport {
     
     
-    public partial class WebForm1 {
+    public partial class Dashboard {
         
         /// <summary>
         /// GMap1 элемент управления.

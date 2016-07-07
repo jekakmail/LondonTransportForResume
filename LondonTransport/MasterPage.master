@@ -10,6 +10,7 @@
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/style.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder id="HeadPlaceHolder" runat="server" />
 </head>
 <body>
@@ -27,7 +28,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li><asp:HyperLink runat="server" NavigateUrl="Dashboard.aspx" Text="Dashboard"></asp:HyperLink></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About</a></li>
@@ -40,44 +41,22 @@
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
             <li class="active">
-                <a href="#">Overview <span class="sr-only">(current)</span></a>
+                <a href="#">Santander Cycles <span class="sr-only">(current)</span></a>
             </li>
-            <li>
-                <a href="#">Reports</a>
+            <li class="disabled">
+                <a href="#">Tube</a>
             </li>
-            <li>
-                <a href="#">Analytics</a>
+            <li class="disabled">
+                <a href="#">Buses</a>
+            </li >
+            <li class="disabled">
+                <a href="#">River</a>
             </li>
-            <li>
-                <a href="#">Export</a>
+             <li class="disabled">
+                <a href="#">Emirates Air Line</a>
             </li>
-        </ul>
-        <ul class="nav nav-sidebar">
-            <li>
-                <a href="">Nav item</a>
-            </li>
-            <li>
-                <a href="">Nav item again</a>
-            </li>
-            <li>
-                <a href="">One more nav</a>
-            </li>
-            <li>
-                <a href="">Another nav item</a>
-            </li>
-            <li>
-                <a href="">More navigation</a>
-            </li>
-        </ul>
-        <ul class="nav nav-sidebar">
-            <li>
-                <a href="">Nav item again</a>
-            </li>
-            <li>
-                <a href="">One more nav</a>
-            </li>
-            <li>
-                <a href="">Another nav item</a>
+             <li class="disabled">
+                <a href="#">National Rail</a>
             </li>
         </ul>
     </div>
