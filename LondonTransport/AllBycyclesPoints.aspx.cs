@@ -10,36 +10,31 @@ using Subgurim.Controles;
 
 namespace LondonTransport
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class AllBycyclesPoints : System.Web.UI.Page
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            var response = new GetDataFromApi();
-            var jsonObj = response.GetCyclePoints();
+            var collectionPoints = GetDataFromApi.Instance.GetCyclePoints();
 
             var mManager = new MarkerManager();
-
-            var enumerable = JArray.Parse(jsonObj.ToString());
-            if (enumerable != null)
+            
+            if (collectionPoints != null)
             {
-                foreach (dynamic item in enumerable)
+                foreach (var cyclePoint in collectionPoints)
                 {
-                    var el = JObject.Parse(item.ToString());
-                    var lat = el["lat"];
-                    var lon = el["lon"];
-                    var commonName = el["commonName"].ToString();
-
+                    var color = cyclePoint.Status ? Color.Red : Color.Blue;
+                    
                     var gIcon = new GIcon()
                     {
-                        flatIconOptions = new FlatIconOptions(15, 15, Color.Blue, Color.Black, "C", Color.White, 8,
+                        flatIconOptions = new FlatIconOptions(12,12, color, Color.Black, "C", Color.White, 7,
                             FlatIconOptions.flatIconShapeEnum.circle)
                     };
 
-                    var gPoint = new GLatLng(Convert.ToDouble(lat), Convert.ToDouble(lon));
+                    var gPoint = cyclePoint.Point;
 
                     var gMarker = new GMarker(gPoint, gIcon);
 
-                    var gWindow = new GInfoWindow(gMarker, commonName);
+                    var gWindow = new GInfoWindow(gMarker, cyclePoint.CommonName);
 
                     mManager.Add(gWindow, 12);
                 }
