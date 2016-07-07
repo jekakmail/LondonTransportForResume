@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h1 class="page-header">Dashboard</h1>
-    <%--<div class="row placeholders">
+    <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
             <h4>Label</h4>
@@ -154,8 +154,6 @@
             </tr>
             </tbody>
         </table>
-    </div>--%>
-    <div class="row gmap">
-        <gmaps:GMap ID="GMap1" runat="server" mapType="Normal" Height="100%" Width="100%" />
     </div>
+    
 </asp:Content>
