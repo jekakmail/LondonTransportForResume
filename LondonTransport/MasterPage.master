@@ -28,8 +28,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-                <asp:HyperLink runat="server" NavigateUrl="~/Dashboard.aspx" Text="Santander Cycles"></asp:HyperLink>
+            <li class="active dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Santander Cycles <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><asp:HyperLink runat="server" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" Text="Show all points" NavigateUrl="~/AllBycyclesPoints.aspx"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" Text="Search in radius" NavigateUrl="~/SearchInRadius.aspx"></asp:HyperLink></li>
+                    <li><a href="#">Availible bycycles</a></li>
+                </ul>
             </li>
             <li class="disabled">
                 <a href="#">Tube</a>
@@ -63,8 +69,8 @@
             <li>
                 <asp:HyperLink runat="server" Text="Show all points" NavigateUrl="~/AllBycyclesPoints.aspx" ID="AllBycyclePoints"></asp:HyperLink>
             </li>
-            <li class="disabled">
-                <a href="#">Search in radius</a>
+            <li>
+                <asp:HyperLink runat="server" Text="Search in radius" NavigateUrl="~/SearchInRadius.aspx" ID="SearchInRadius"></asp:HyperLink>
             </li>
             <li class="disabled">
                 <a href="#">Availible bycycles</a>

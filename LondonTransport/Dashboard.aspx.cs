@@ -14,9 +14,31 @@ namespace LondonTransport
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+        public static string CountPoints { get; set; }
+        public static string AvailibleBycycles { get; set; }
+
+        public static string EmptyDocks { get; set; }
+
+        public static string Docks { get; set; }
+        private List<CyclePoint> resData;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            resData = GetDataFromApi.Instance.GetCyclePoints();
+
+            CountPoints = resData.Count.ToString();
+            AvailibleBycycles = (from cyclePoint in resData
+                                 select cyclePoint.AvailibleBike).Sum().ToString();
+
+            EmptyDocks = (from cyclePoint in resData
+                select cyclePoint.EmptyDocks).Sum().ToString();
+
+            Docks = (from cyclePoint in resData
+                          select cyclePoint.Docks).Sum().ToString();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            cyclePointsInfo.DataSource = GetDataFromApi.Instance.GetCyclePoints();
+            cyclePointsInfo.DataSource = resData;
             cyclePointsInfo.DataBind();
         }
         

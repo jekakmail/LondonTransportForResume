@@ -17,3 +17,15 @@
   border-radius: 50%;
 }
 
+.icon-park {
+    color: darkcyan;
+}
+.icon-check {
+    color: lightgreen;
+}
+.icon-lowbattery {
+    color: slategray;
+}
+.icon-cycle {
+    color: pink;
+}

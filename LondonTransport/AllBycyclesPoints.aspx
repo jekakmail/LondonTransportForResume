@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h1 class="page-header">All bycyle points</h1>
     <div class="row gmap">
+        <blockquote>
+            <p>For more information, select a point card</p>
+        </blockquote>
         <gmaps:GMap ID="GMap1" runat="server" mapType="Normal" Height="100%" Width="100%" />
     </div>
      <script >
