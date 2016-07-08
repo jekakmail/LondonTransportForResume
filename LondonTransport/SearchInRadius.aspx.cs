@@ -10,11 +10,6 @@ namespace LondonTransport
 {
     public partial class SearchInRadius : System.Web.UI.Page
     {
-        private void BuildMap()
-        {
-            
-        }
-
         protected string GMap1_ServerEvent(object s, GAjaxServerEventOtherArgs e)
         {
             string js = string.Empty;

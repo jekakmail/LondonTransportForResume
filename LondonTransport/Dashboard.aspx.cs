@@ -23,7 +23,7 @@ namespace LondonTransport
         private List<CyclePoint> resData;
         protected void Page_Init(object sender, EventArgs e)
         {
-            resData = GetDataFromApi.Instance.GetCyclePoints();
+            resData = GetDataFromApi.Instance.GetAllCyclePoints();
 
             CountPoints = resData.Count.ToString();
             AvailibleBycycles = (from cyclePoint in resData

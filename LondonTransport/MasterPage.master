@@ -10,7 +10,7 @@
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/style.css" rel="stylesheet" />
-     
+    <meta lang="en"/>
     <asp:ContentPlaceHolder id="HeadPlaceHolder" runat="server" />
 </head>
 <body>
@@ -32,9 +32,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Santander Cycles <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><asp:HyperLink runat="server" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" Text="Show all points" NavigateUrl="~/AllBycyclesPoints.aspx"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" Text="Availability" NavigateUrl="~/BycycleAvailability.aspx"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" Text="Search in radius" NavigateUrl="~/SearchInRadius.aspx"></asp:HyperLink></li>
-                    <li><a href="#">Availible bycycles</a></li>
                 </ul>
             </li>
             <li class="disabled">
@@ -67,14 +66,11 @@
                 <asp:HyperLink runat="server" NavigateUrl="~/Dashboard.aspx" Text="Dashboard" ID="Dashboard"></asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink runat="server" Text="Show all points" NavigateUrl="~/AllBycyclesPoints.aspx" ID="AllBycyclePoints"></asp:HyperLink>
+                <asp:HyperLink runat="server" Text="Availability" NavigateUrl="~/BycycleAvailability.aspx" ID="BycycleAvailability"></asp:HyperLink>
             </li>
             <li>
                 <asp:HyperLink runat="server" Text="Search in radius" NavigateUrl="~/SearchInRadius.aspx" ID="SearchInRadius"></asp:HyperLink>
             </li>
-            <li class="disabled">
-                <a href="#">Availible bycycles</a>
-            </li >
         </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

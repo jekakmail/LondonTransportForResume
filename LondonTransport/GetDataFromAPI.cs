@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Web.Configuration;
@@ -46,7 +47,7 @@ namespace LondonTransport
 
         private void Check()
         {
-            if ((LstCyclePoints!=null && (DateTime.Now - LastUpdateTime).Minutes > 5) || LstCyclePoints.Count == 0)
+            if (LstCyclePoints != null && (((DateTime.Now - LastUpdateTime).Minutes > 5) || LstCyclePoints.Count == 0))
             {
                 CollectionUpdate();
             }
@@ -82,11 +83,38 @@ namespace LondonTransport
             }
         }
 
-        public List<CyclePoint> GetCyclePoints()
+        public List<CyclePoint> GetAllCyclePoints()
         {
             Check();
 
             return LstCyclePoints; 
+        }
+
+        public List<CyclePoint> GetAvailiblePoints()
+        {
+            Check();
+
+            var _lst = LstCyclePoints.Where(point => point.AvailibleBike > 0).ToList();
+
+            return _lst;
+        }
+
+        public List<CyclePoint> GetEmptyPoints()
+        {
+            Check();
+
+            var _lst = LstCyclePoints.Where(point => point.AvailibleBike == 0).ToList();
+
+            return _lst;
+        }
+
+        public List<CyclePoint> GetLockedPoints()
+        {
+            Check();
+
+            var _lst = LstCyclePoints.Where(point => point.Status ).ToList();
+
+            return _lst;
         }
     }
 }

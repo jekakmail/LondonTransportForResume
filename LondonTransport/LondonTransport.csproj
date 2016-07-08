@@ -81,6 +81,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\BycycleAvailability.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -104,8 +105,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="AllBycyclesPoints.aspx" />
     <Content Include="SearchInRadius.aspx" />
+    <Content Include="BycycleAvailability.aspx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -135,19 +136,19 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AllBycyclesPoints.aspx.cs">
-      <DependentUpon>AllBycyclesPoints.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AllBycyclesPoints.aspx.designer.cs">
-      <DependentUpon>AllBycyclesPoints.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SearchInRadius.aspx.cs">
       <DependentUpon>SearchInRadius.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SearchInRadius.aspx.designer.cs">
       <DependentUpon>SearchInRadius.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BycycleAvailability.aspx.cs">
+      <DependentUpon>BycycleAvailability.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BycycleAvailability.aspx.designer.cs">
+      <DependentUpon>BycycleAvailability.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
