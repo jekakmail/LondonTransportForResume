@@ -20,25 +20,26 @@ namespace LondonTransport
         public static string EmptyDocks { get; set; }
 
         public static string Docks { get; set; }
-        private List<CyclePoint> resData;
+        private List<CyclePoint> _resData;
         protected void Page_Init(object sender, EventArgs e)
         {
-            resData = GetDataFromApi.Instance.GetAllCyclePoints();
+            _resData = GetDataFromApi.Instance.GetAllCyclePoints();
 
-            CountPoints = resData.Count.ToString();
-            AvailibleBycycles = (from cyclePoint in resData
+            CountPoints = _resData.Count.ToString();
+
+            AvailibleBycycles = (from cyclePoint in _resData
                                  select cyclePoint.AvailibleBike).Sum().ToString();
 
-            EmptyDocks = (from cyclePoint in resData
+            EmptyDocks = (from cyclePoint in _resData
                 select cyclePoint.EmptyDocks).Sum().ToString();
 
-            Docks = (from cyclePoint in resData
+            Docks = (from cyclePoint in _resData
                           select cyclePoint.Docks).Sum().ToString();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cyclePointsInfo.DataSource = resData;
+            cyclePointsInfo.DataSource = _resData;
             cyclePointsInfo.DataBind();
         }
         

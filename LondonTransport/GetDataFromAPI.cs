@@ -18,7 +18,6 @@ namespace LondonTransport
     public class GetDataFromApi
     {
         private DateTime LastUpdateTime { get; set; }
-
         private List<CyclePoint> LstCyclePoints { get; set; }
 
         private static object _sync = new object();
@@ -67,20 +66,20 @@ namespace LondonTransport
             }
 
             var enumerable = JArray.FromObject(resultJson);
-            if (enumerable != null)
+
+            if (enumerable == null) return;
+
+            var newCyclePoints = new List<CyclePoint>();
+
+            foreach (dynamic item in enumerable)
             {
-                var newCyclePoints = new List<CyclePoint>();
+                var bycylePoint = new CyclePoint(item);
 
-                foreach (dynamic item in enumerable)
-                {
-                    var bycylePoint = new CyclePoint(item);
-
-                    newCyclePoints.Add(bycylePoint);
-                }
-
-                LstCyclePoints = newCyclePoints;
-                LastUpdateTime = DateTime.Now;
+                newCyclePoints.Add(bycylePoint);
             }
+
+            LstCyclePoints = newCyclePoints;
+            LastUpdateTime = DateTime.Now;
         }
 
         public List<CyclePoint> GetAllCyclePoints()
@@ -94,27 +93,21 @@ namespace LondonTransport
         {
             Check();
 
-            var _lst = LstCyclePoints.Where(point => point.AvailibleBike > 0).ToList();
-
-            return _lst;
+            return LstCyclePoints.Where(point => point.AvailibleBike > 0).ToList();
         }
 
         public List<CyclePoint> GetEmptyPoints()
         {
             Check();
 
-            var _lst = LstCyclePoints.Where(point => point.AvailibleBike == 0).ToList();
-
-            return _lst;
+            return LstCyclePoints.Where(point => point.AvailibleBike == 0).ToList();
         }
 
         public List<CyclePoint> GetLockedPoints()
         {
             Check();
 
-            var _lst = LstCyclePoints.Where(point => point.Status ).ToList();
-
-            return _lst;
+            return LstCyclePoints.Where(point => point.Status).ToList();
         }
     }
 }
