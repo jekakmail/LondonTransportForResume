@@ -48,10 +48,27 @@ namespace LondonTransport
             }
             return js;
         }
-        
+
+        private void GetLocation(string[] args)
+        {
+            var _lst = GetDataFromApi.Instance.GetBycyclesInRadius(args);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Page.IsPostBack)
+            {
+                string eventTarget = Convert.ToString(Request.Params.Get("__EVENTTARGET"));
+                
+                switch (eventTarget)
+                {
+                    case "getCoordinate":
+                        var eventArgs = Convert.ToString(Request.Params.Get("__EVENTARGUMENT")).Split(':');
+                        GetLocation(eventArgs);
+                        break;
+                }
+            }
+            else
             {
                 GMap1.Add(new GListener(GMap1.GMap_Id, GListener.Event.click,
                      string.Format(@"

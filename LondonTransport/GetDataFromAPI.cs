@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Tfl.Api.Presentation.Entities;
 
 namespace LondonTransport
 {
@@ -38,10 +39,15 @@ namespace LondonTransport
             }
         }
 
+        private readonly string _appId;
+        private readonly string _appKey;
+
         
         protected GetDataFromApi()
         {
             LstCyclePoints = new List<CyclePoint>();
+            _appId = WebConfigurationManager.AppSettings["application_id"];
+            _appKey = WebConfigurationManager.AppSettings["application_key"];
         }
 
         private void Check()
@@ -61,7 +67,7 @@ namespace LondonTransport
                 dynamic jsonObj =
                     JsonConvert.DeserializeObject(
                         client.DownloadString(
-                            $"https://api.tfl.gov.uk/BikePoint?app_id={WebConfigurationManager.AppSettings["application_id"]}&app_key={WebConfigurationManager.AppSettings["application_key"]}"));
+                            $"https://api.tfl.gov.uk/BikePoint?app_id={_appId}&app_key={_appKey}"));
                 resultJson = jsonObj;
             }
 
@@ -109,5 +115,45 @@ namespace LondonTransport
 
             return LstCyclePoints.Where(point => point.Status).ToList();
         }
+
+        public List<CyclePoint> GetBycyclesInRadius(string[] args)
+        {
+            dynamic jsonArrPoints;
+
+            var _lstBycycles = new List<CyclePoint>();
+
+            using (var client = new WebClient())
+            {
+                string response = string.Empty;
+                try
+                {
+                    response = client.DownloadString(
+                        $"https://api.tfl.gov.uk/BikePoint?lat={args[0]}&lon={args[1]}&radius={args[2]}&app_id={_appId}&app_key={_appKey}");
+
+                }
+                catch (WebException ex)
+                {
+                    (ex.Response as HttpWebResponse).StatusCode.ToString();
+                }
+
+                jsonArrPoints = JsonConvert.DeserializeObject(response);
+            }
+            
+
+            var enumerable = JArray.FromObject(jsonArrPoints["places"]);
+
+            if (enumerable == null) return _lstBycycles;
+            
+            foreach (dynamic item in enumerable)
+            {
+                var bycylePoint = new CyclePoint(item);
+
+                _lstBycycles.Add(bycylePoint);
+            }
+
+
+            return _lstBycycles;
+        }
+
     }
 }

@@ -19,12 +19,11 @@
         </div>
         <pre class="labelInfo"><%=LabelInfo %></pre>
     </div>
-        <%--<blockquote>
-            <p>For more information, select a point card</p>
-        </blockquote>--%>
     <div class="row gmap">
+        <p ID="WarningJS" class="bg-danger">For correct display of results, including JavaScript!</p>
         <gmaps:GMap ID="GMap1" runat="server" mapType="Normal" Height="100%" Width="100%" />
     </div>
+    <script src="Scripts/WarningJSRemove.js"></script>
      <script >
          $("#BycycleAvailability").parent("li").addClass("active");
     </script>
