@@ -120,7 +120,10 @@ namespace LondonTransport
         {
             dynamic jsonArrPoints;
 
-            var _lstBycycles = new List<CyclePoint>();
+            var lstBycycles = new List<CyclePoint>();
+
+            if (args.Length < 2 || args[0] == string.Empty || args[1] == string.Empty || args[2] == string.Empty)
+                return lstBycycles;
 
             using (var client = new WebClient())
             {
@@ -142,17 +145,17 @@ namespace LondonTransport
 
             var enumerable = JArray.FromObject(jsonArrPoints["places"]);
 
-            if (enumerable == null) return _lstBycycles;
+            if (enumerable == null) return lstBycycles;
             
             foreach (dynamic item in enumerable)
             {
                 var bycylePoint = new CyclePoint(item);
 
-                _lstBycycles.Add(bycylePoint);
+                lstBycycles.Add(bycylePoint);
             }
 
 
-            return _lstBycycles;
+            return lstBycycles;
         }
 
     }

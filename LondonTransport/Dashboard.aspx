@@ -44,14 +44,14 @@
     <h2 class="sub-header">Bycyle points</h2>
     <div class="table-responsive">
         <asp:GridView ID="cyclePointsInfo" runat="server" 
-            CssClass="table table-striped" AutoGenerateColumns="False" GridLines="None" ShowHeader="True" AllowSorting="True"
+            CssClass="table table-striped" AutoGenerateColumns="False" GridLines="None" ShowHeader="True"
             PageSize="10" AllowPaging="True" PagerStyle-CssClass="bs-pagination" OnPageIndexChanging ="cyclePointsInfo_OnPageIndexChanging"
             O>
             <Columns>
                 <asp:BoundField DataField="CommonName" HeaderText="Name"/>
-                <asp:BoundField DataField="AvailibleBike" HeaderText="Availible Bike" SortExpression="AvailibleBike"/>
-                <asp:BoundField DataField="EmptyDocks" HeaderText="Empty Docks" SortExpression="EmptyDocks"/>
-                <asp:BoundField DataField="Docks" HeaderText="Docks" SortExpression="Docks"/>
+                <asp:BoundField DataField="AvailibleBike" HeaderText="Availible Bike"/>
+                <asp:BoundField DataField="EmptyDocks" HeaderText="Empty Docks"/>
+                <asp:BoundField DataField="Docks" HeaderText="Docks"/>
             </Columns>
         </asp:GridView>
     </div>
